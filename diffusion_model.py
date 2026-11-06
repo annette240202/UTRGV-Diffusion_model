@@ -21,6 +21,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def plot_profile(x, z, color="r", title=None, output=None):
+    plt.figure()
+    plt.plot(x, z, color)
+    plt.xlabel("x")
+    plt.ylabel("z")
+    if title is not None:
+        plt.title(title)
+    if output is not None:
+        plt.savefig(output)
+
 
 # Start by setting two fized model parameters, the diffusivity and the size of the model domain.
 
@@ -70,12 +80,12 @@ z[x > Lx / 2] = z_right
 
 # In[ ]:
 
-
-plt.figure()
-plt.plot(x, z, "r")
-plt.xlabel("x")
-plt.ylabel("z")
-plt.title("Initial profile")
+plot_profile(x, z, title="Initial profile", output="initial.png")
+#plt.figure()
+#plt.plot(x, z, "r")
+#plt.xlabel("x")
+#plt.ylabel("z")
+#plt.title("Initial profile")
 
 
 # z uses the function "zeros_like" which uses the zeros as the array we first did.
@@ -118,12 +128,12 @@ z
 
 # In[ ]:
 
-
-plt.figure()
-plt.plot(x, z, "b")
-plt.xlabel("x")
-plt.ylabel("z")
-plt.title("Final profile")
+plot_profile(x, z, title="Final Profile", color="b", output="final.png")
+#plt.figure()
+#plt.plot(x, z, "b")
+#plt.xlabel("x")
+#plt.ylabel("z")
+#plt.title("Final profile")
 
 
 # We plot x vs z and "b" is a shortcut for "blue". Then labels were added along a title.
